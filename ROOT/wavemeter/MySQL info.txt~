@@ -1,0 +1,23 @@
+mysql> SHOW TABLES;
++--------------------------+
+| Tables_in_Interferometry |
++--------------------------+
+| firsttest                |
+| wavemeter                |
++--------------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE  `wavemeter` (`id` INT UNSIGNED AUTO_INCREMENT, `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `dir` TINYINT(1),  `countRef` INT UNSIGNED DEFAULT NULL, `countTest` INT UNSIGNED DEFAULT NULL, PRIMARY KEY (id));
+
+mysql> describe wavemeter;
++-----------+------------------+------+-----+-------------------+----------------+
+| Field     | Type             | Null | Key | Default           | Extra          |
++-----------+------------------+------+-----+-------------------+----------------+
+| id        | int(10) unsigned | NO   | PRI | NULL              | auto_increment |
+| time      | timestamp        | NO   |     | CURRENT_TIMESTAMP |                |
+| dir       | tinyint(1)       | YES  |     | NULL              |                |
+| countRef  | int(10) unsigned | YES  |     | NULL              |                |
+| countTest | int(10) unsigned | YES  |     | NULL              |                |
++-----------+------------------+------+-----+-------------------+----------------+
+5 rows in set (0.00 sec)
+

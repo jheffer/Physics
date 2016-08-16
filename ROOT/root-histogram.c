@@ -1,0 +1,48 @@
+// ROOT histogram
+// Create a simple histogram with a small data set.
+
+// #include <iostream> // included by ROOT
+#include "TH1F.h"
+#include "TFile.h"
+#include "TPad.h"
+
+void main(){
+  
+  // file access
+  TFile *file1 = new TFile("Syst.root", "RECREATE");
+
+  // 5 bins between 0 and 5
+  const int m_size = 5;
+  const double signal[m_size]     = {  0.4,  1.6,  2.5,  1.2,  0.5 };
+  const double background[m_size] = { 10.0,  8.6,  7.6,  4.5,  0.8 };
+  const int data[m_size]          = {    8,   10,    8,    5,    1 };
+
+  // Canvas
+  TCanvas *c1 = new TCanvas("c1","title",10,10,900,500);
+
+  // Histogram
+  TH1F *sig    = new TH1F("signal", "signal"    , 5, 0, 5);
+  TH1F *bg     = new TH1F("bg"    , "background", 5, 0, 5);
+  TH1F *bgSyst = new TH1F("bgSyst", "bg Scale"  , 5, 0, 5);
+  TH1F *d      = new TH1F("data"  , "data"      , 5, 0, 5);
+
+  // Fill arrays
+  for (int i=0; i<m_size;i++){
+    std::cout << "filling signal bin " << i << " with " << signal[i] << std::endl;
+    std::cout << "filling bg bin "     << i << " with " << background[i] << std::endl;
+    std::cout << "filling data bin "   << i << " with " << data[i] << std::endl;
+    sig->Fill(i,signal[i]);
+    bg->Fill(i,background[i]);
+    d->Fill(i,data[i]);
+  }
+
+  // Draw histogram
+  bg->Draw();
+  sig->SetLineColor(kRed);
+  sig->Draw("SAME");
+  d->Draw("SAME");
+
+  bg->Write();
+  sig->Write();
+  d->Write();
+}

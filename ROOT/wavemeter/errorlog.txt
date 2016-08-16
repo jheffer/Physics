@@ -1,0 +1,228 @@
+In file included from /user2/jheffer/root/atomic_int/AutoDict_vector_result_.cxx:2:0,
+                 from /user2/jheffer/root/atomic_int/AutoDict_vector_result__cxx_ACLiC_dict.h:34,
+                 from /user2/jheffer/root/atomic_int/AutoDict_vector_result__cxx_ACLiC_dict.cxx:17:
+/user2/jheffer/root/atomic_int/./histo.cpp: In constructor ‘result::result()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:24:3: error: ‘fringes’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:26:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:26:53: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In constructor ‘result::result(int, int, int, int)’:
+/user2/jheffer/root/atomic_int/./histo.cpp:37:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:37:53: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In destructor ‘result::~result()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:44:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:44:57: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In member function ‘void result::show()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:51:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:51:50: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In function ‘void histo()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:152:2: error: ‘TLegend’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:152:12: error: ‘leg’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:152:22: error: expected type-specifier before ‘TLegend’
+/user2/jheffer/root/atomic_int/./histo.cpp:152:22: error: expected ‘;’ before ‘TLegend’
+/user2/jheffer/root/atomic_int/./histo.cpp:159:2: error: ‘c1’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:151:29: warning: unused variable ‘xl2’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/./histo.cpp:151:41: warning: unused variable ‘yl2’ [-Wunused-variable]
+g++: error: /user2/jheffer/root/atomic_int/AutoDict_vector_result__cxx_ACLiC_dict.o: No such file or directory
+Error in <ACLiC>: Compilation failed!
+In file included from /user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long_.cxx:2:0,
+                 from /user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.h:34,
+                 from /user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:17:
+/user2/jheffer/root/atomic_int/./histo.cpp: In constructor ‘result::result()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:24:3: error: ‘fringes’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:26:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:26:53: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In constructor ‘result::result(int, int, int, int)’:
+/user2/jheffer/root/atomic_int/./histo.cpp:37:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:37:53: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In destructor ‘result::~result()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:44:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:44:57: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In member function ‘void result::show()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:51:3: error: ‘cout’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:51:50: error: ‘endl’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp: In function ‘void histo()’:
+/user2/jheffer/root/atomic_int/./histo.cpp:152:2: error: ‘TLegend’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:152:12: error: ‘leg’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:152:22: error: expected type-specifier before ‘TLegend’
+/user2/jheffer/root/atomic_int/./histo.cpp:152:22: error: expected ‘;’ before ‘TLegend’
+/user2/jheffer/root/atomic_int/./histo.cpp:159:2: error: ‘c1’ was not declared in this scope
+/user2/jheffer/root/atomic_int/./histo.cpp:151:29: warning: unused variable ‘xl2’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/./histo.cpp:151:41: warning: unused variable ‘yl2’ [-Wunused-variable]
+In file included from /user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:17:0:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.h: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.h:51:9: error: ‘random_access_iterator’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:59:62: error: ‘random_access_iterator’ in namespace ‘::’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:59:64: error: ISO C++ forbids declaration of ‘parameter’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:59:86: error: expected ‘,’ or ‘...’ before ‘<’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘ROOT::TGenericClassInfo* ROOT::GenerateInitInstanceLocal(int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:62:7: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:63:7: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:63:38: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:63:39: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:63:39: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:69: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:100: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:101: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:101: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:108: error: expected unqualified-id before numeric constant
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:67:26: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:67:57: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:67:58: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:67:58: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:67:81: error: ‘ptr’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:20: error: ‘random_access_iteratorlEresultcOlonggR_ShowMembers’ declared as reference but not initialized
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:73: error: ‘random_access_iteratorlEresultcOlonggR_Dictionary’ declared as reference but not initialized
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:124: error: conflicting declaration ‘ROOT::TGenericClassInfo isa_proxy’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:34: error: ‘isa_proxy’ has a previous declaration as ‘TVirtualIsAProxy* isa_proxy’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:135: error: expected unqualified-id before numeric constant
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:64:34: warning: unused variable ‘isa_proxy’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:20: warning: unused variable ‘random_access_iteratorlEresultcOlonggR_ShowMembers’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:68:73: warning: unused variable ‘random_access_iteratorlEresultcOlonggR_Dictionary’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:77:50: error: ‘random_access_iterator’ in namespace ‘::’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:77:52: error: ISO C++ forbids declaration of ‘parameter’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:77:74: error: expected ‘,’ or ‘...’ before ‘<’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘ROOT::TGenericClassInfo* ROOT::GenerateInitInstance(int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:79:41: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:79:72: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:79:73: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:79:73: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:82:93: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:82:93: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:82:85: error: expected primary-expression before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:82:85: error: expected ‘)’ before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void ROOT::random_access_iteratorlEresultcOlonggR_Dictionary()’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:86:50: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:86:50: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:86:42: error: expected primary-expression before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:86:42: error: expected ‘)’ before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void ROOT::random_access_iteratorlEresultcOlonggR_ShowMembers(void*, TMemberInspector&)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:100:67: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:100:67: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:100:59: error: expected primary-expression before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:100:59: error: expected ‘)’ before ‘const’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void* ROOT::new_random_access_iteratorlEresultcOlonggR(void*)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:57: error: expected type-specifier before ‘::’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:57: error: expected ‘:’ before ‘::’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:57: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:88: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:89: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:89: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:109:93: error: expected unqualified-id before ‘>’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void* ROOT::newArray_random_access_iteratorlEresultcOlonggR(Long_t, void*)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:56: error: expected type-specifier before ‘::’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:56: error: expected ‘:’ before ‘::’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:56: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:87: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:88: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:88: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:112:92: error: expected unqualified-id before ‘>’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:111:17: warning: unused parameter ‘nElements’ [-Wunused-parameter]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void ROOT::delete_random_access_iteratorlEresultcOlonggR(void*)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:116:16: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:116:47: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:116:48: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:116:48: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:116:57: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:115:16: warning: unused parameter ‘p’ [-Wunused-parameter]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void ROOT::deleteArray_random_access_iteratorlEresultcOlonggR(void*)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:119:19: error: ‘::random_access_iterator’ has not been declared
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:119:50: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:119:51: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:119:51: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:119:60: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:118:16: warning: unused parameter ‘p’ [-Wunused-parameter]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void ROOT::destruct_random_access_iteratorlEresultcOlonggR(void*)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:122:15: error: ‘random_access_iterator’ in namespace ‘::’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:123:9: error: ‘current_t’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:123:19: error: expected primary-expression before ‘)’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:123:20: error: expected ‘)’ before ‘p’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:121:16: warning: unused parameter ‘p’ [-Wunused-parameter]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘int G__AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict_3122_0_1(G__value*, const char*, G__param*, int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:159:4: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:159:33: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:159:34: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:159:34: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:164:8: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:164:16: error: expected type-specifier before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:164:16: error: expected ‘;’ before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:166:8: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:166:29: error: expected type-specifier before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:166:29: error: expected ‘;’ before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:170:8: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:170:16: error: expected type-specifier before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:170:16: error: expected ‘;’ before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:172:8: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:172:29: error: expected type-specifier before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:172:29: error: expected ‘;’ before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:175:28: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘int G__AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict_3122_0_2(G__value*, const char*, G__param*, int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:185:4: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:185:33: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:185:34: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:185:34: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:187:4: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:187:12: error: expected type-specifier before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:187:12: error: expected ‘;’ before ‘random_access_iterator’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:186:10: warning: unused variable ‘tmp’ [-Wunused-variable]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:195:9: error: ‘random_access_iterator’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘int G__AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict_3122_0_3(G__value*, const char*, G__param*, int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:211:18: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:211:47: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:211:48: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:211:48: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:215:12: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:215:41: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:215:42: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:215:42: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:215:152: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:221:16: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:221:45: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:221:46: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:221:46: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:224:10: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:224:39: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:224:40: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:224:40: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:224:102: error: expected ‘)’ before ‘;’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘int G__AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict_3122_0_4(G__value*, const char*, G__param*, int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:235:4: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:235:33: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:235:34: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:235:34: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:236:10: error: ‘random_access_iterator’ does not name a type
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:237:28: error: ‘obj’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void G__setup_memvarrandom_access_iteratorlEresultcOlonggR()’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:6: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:35: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:36: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:36: error: expected ‘;’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:46: error: ‘p’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:78: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:79: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:321:79: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘void G__cpp_setup_tagtableAutoDict_random_access_iterator_result_long__cxx_ACLiC_dict()’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:481:160: error: ‘random_access_iterator’ was not declared in this scope
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:481:189: error: expected primary-expression before ‘,’ token
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:481:190: error: expected primary-expression before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:481:190: error: expected ‘)’ before ‘long’
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: In function ‘ROOT::TGenericClassInfo* ROOT::GenerateInitInstance(int)’:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:80:4: warning: control reaches end of non-void function [-Wreturn-type]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx: At global scope:
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:319:13: warning: ‘void G__setup_memvarrandom_access_iteratorlEresultcOlonggR()’ defined but not used [-Wunused-function]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:340:13: warning: ‘void G__setup_memfuncrandom_access_iteratorlEresultcOlonggR()’ defined but not used [-Wunused-function]
+/user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.cxx:85:16: warning: ‘void ROOT::random_access_iteratorlEresultcOlonggR_Dictionary()’ defined but not used [-Wunused-function]
+g++: error: /user2/jheffer/root/atomic_int/AutoDict_random_access_iterator_result_long__cxx_ACLiC_dict.o: No such file or directory
+Error in <ACLiC>: Compilation failed!

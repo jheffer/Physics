@@ -1,0 +1,161 @@
+//#include <iostream>
+//#include <vector>
+#include "TH1I.h"
+
+class result {
+
+private:
+
+	// Member variables
+
+	unsigned long int timestamp;	// unix timestamp (integer, length 10)
+	unsigned short int direction;	// direction flag (up/down?)
+	unsigned long int arm1;	// number of fringes in each arm
+	unsigned long int arm2;
+
+public:
+	
+	// Default constructor
+
+	result()
+	{
+		timestamp = 0;
+		direction = 0;
+		fringes = 0;
+		//fringes1 = d;
+		cout << "Creating result at t = " << timestamp << endl;		
+	}
+
+	// Parameterized constructor
+
+	result(int a, int b, int c, int d)
+	{
+		timestamp = a;
+		direction = b;
+		arm1 = c;
+		arm2 = d;
+		cout << "Creating result at t = " << timestamp << endl;
+	}
+
+	// Destructor
+
+	~result()
+	{
+		cout << "Destroying result with t = " << timestamp << endl;
+	}
+
+	// Echo the number of fringes
+
+	void show()
+	{
+		cout << "Result (t = " << timestamp << "):" << endl;
+		cout << "\tFringes counted in arm 1: " << arm1 << endl;
+		cout << "\tFringes counted in arm 2: " << arm2 << endl;
+	}
+
+	int retArm1() {return arm1;}
+	int retArm2() {return arm2;}
+};
+
+/*
+	class myClass {
+
+	private:
+		int x;
+	public:
+		myClass()
+		{
+			x = 1;
+		}
+
+		int show()
+		{
+			return x;
+		}
+	};
+*/
+
+void histo(){
+
+	// Variables
+
+	const unsigned short int numResults = 100;
+
+	//vector<result> myResults;
+
+	/* Doesn't work.
+		myClass bob;
+		cout << bob.show() << endl;
+
+		vector<myClass*> myVector;
+	*/
+
+	/* This works.
+		vector<int> myInts;
+
+		myInts.push_back(1);
+		myInts.push_back(44);
+		myInts.push_back(3);
+
+		vector<int>::iterator iter;
+		for(iter = myInts.begin(); iter<myInts.end(); ++iter)
+			cout << *iter << endl;
+	*/
+
+	// Array of pointers to results
+
+	result * results[numResults];
+
+	// Create results
+
+	for(int i = 0; i<numResults; i++)
+	{
+		results[i] = new result(1366622900 + i, 0, rand() % 10, rand() % 10);
+	}
+
+	//results[0] = new result(1366622900, 0, 1134);
+	//results[0]->show();
+	//results.push_back(result(1366622900, 0, 1134));
+
+	/* Histogram */
+
+	TH1I * hist1 = new TH1I("hist1", "Fringe counts;Number of fringes;Frequency", 10, 1, 10);
+	TH1I * hist2 = new TH1I("hist2", "Fringe counts;Number of fringes;Frequency", 10, 1, 10);
+
+	// insert random data to histogram
+
+	for(int i = 0; i<numResults; i++)
+	{
+		hist1->Fill(results[i]->retArm1(), 1);
+		hist2->Fill(results[i]->retArm2(), 1);
+	}
+
+	//hist1->FillRandom("gaus",10);
+	//hist2->FillRandom("gaus",10);
+
+	// display histogram
+	
+	hist1->SetStats(kFALSE);	// disable histogram statistics box
+	hist1->SetFillColor(36);
+	hist1->SetLineColor(1);
+	hist1->Draw();
+
+	hist2->SetStats(kFALSE);
+	hist2->SetFillColor(44);
+	hist2->SetLineColor(1);
+	hist2->Draw("SAME");
+
+	// legend
+
+	Double_t xl1=0.8, yl1=0.8, xl2=xl1+.1, yl2=yl1+.1;
+	TLegend * leg = new TLegend(xl1,yl1,xl2,yl2);
+	leg->AddEntry(hist1,"Arm 1","F");
+	leg->AddEntry(hist2,"Arm 2","F");
+	leg->Draw();
+
+	// save as jpg
+
+	c1->SaveAs("histo.jpg");	// c1 is the default canvas
+
+
+}
