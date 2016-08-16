@@ -1,0 +1,246 @@
+#!/bin/bash
+
+# Loops through images in folder structure
+# ./Images/<molasses_duration>/<wait_time>/
+# wait_time = ballistic expansion time
+
+# Options
+nZeros=3 # leading zeros
+BMPDIR=images # $BMPDIR/9ms/10ms
+FILESTEM=""
+MOTGNUFILE="mot.gnu"
+TEMPGNUFILE="temp.gnu"
+MOLGNUFILE="temp-mol.gnu"
+
+# Data range
+MOLFIRST=0
+MOLLAST=0
+WAITFIRST=5
+WAITLAST=9
+FRAMEFIRST=100
+FRAMELAST=300
+
+# Make base directories
+DATADIRBASE="data"
+PLOTDIRBASE="plots"
+LOGDIRBASE="logs"
+TEMPDIRBASE="temperature"
+rm -r $DATADIRBASE
+rm -r $PLOTDIRBASE
+rm -r $LOGDIRBASE
+rm -r $TEMPDIRBASE
+mkdir $DATADIRBASE
+mkdir $PLOTDIRBASE
+mkdir $LOGDIRBASE
+mkdir $TEMPDIRBASE
+
+# Result file names
+FINALRESULT=$TEMPDIRBASE/temp-mol.txt
+NOISEREPORT=$DATADIRBASE/noise.txt
+
+###############    Molasses time loop     ########################################
+
+for (( loop_molasses=$MOLFIRST; loop_molasses<=$MOLLAST; loop_molasses++ )); do
+
+  # Output files and paths
+  MOLASSES="${loop_molasses}ms"
+  MOLFILE=$DATADIRBASE/$MOLASSES.txt # "Data/0ms.txt"
+  RADIIDATA=$PLOTDIRBASE/$MOLASSES/radii.txt
+
+  mkdir $DATADIRBASE/$MOLASSES
+  mkdir $PLOTDIRBASE/$MOLASSES
+  mkdir $LOGDIRBASE/$MOLASSES
+
+  ###############    Wait time loop     ########################################
+
+  for (( loop_wait=$WAITFIRST; loop_wait<=$WAITLAST; loop_wait++ )); do
+
+    echo "Analysing $loop_molasses ms / $loop_wait ms..."
+
+    # Set paths
+    WAITTIME=$loop_wait\ms
+    WAITFILE=$DATADIRBASE"/"$MOLASSES"/"$WAITTIME".txt"
+    DATADIR=$DATADIRBASE"/"$MOLASSES"/"$WAITTIME
+    LOGDIR=$LOGDIRBASE"/"$MOLASSES"/"$WAITTIME
+    PLOTDIR=$PLOTDIRBASE"/"$MOLASSES"/"$WAITTIME
+
+    # Make directories
+    mkdir $DATADIR
+    mkdir $PLOTDIR
+    mkdir $LOGDIR
+
+    #############     Analyse first frame     #######################
+
+    # Find info/region of interest for first bitmap
+    frameNo=$(printf "%0*d" $nZeros $FRAMEFIRST) # leading 
+zeros
+    FIRSTBMPFILE=$BMPDIR/$MOLASSES/$WAITTIME/$FILESTEM$frameNo.bmp
+ 
+    # Project to axes
+    if [ -e $FIRSTBMPFILE ]; then
+      ./project_to_axis $FIRSTBMPFILE x > $FIRSTBMPFILE"-x.txt"
+      ./project_to_axis $FIRSTBMPFILE y > $FIRSTBMPFILE"-y.txt"
+    fi 
+
+    # Find peak +/- sigma
+    MOTINFOFILE=$DATADIR"/mot-info.txt"
+    python size.py $FIRSTBMPFILE"-x.txt" > $MOTINFOFILE
+    python size.py $FIRSTBMPFILE"-y.txt" >> $MOTINFOFILE
+    python peak.py $FIRSTBMPFILE"-x.txt" >> $MOTINFOFILE
+    python peak.py $FIRSTBMPFILE"-y.txt" >> $MOTINFOFILE
+    python sigma.py $FIRSTBMPFILE"-x.txt" >> $MOTINFOFILE
+    python sigma.py $FIRSTBMPFILE"-y.txt" >> $MOTINFOFILE
+
+    # Find ROI
+    python roi.py $MOTINFOFILE >> $MOTINFOFILE
+
+    ##############    Bitmaps loop   ########################
+
+    for (( i=$FRAMEFIRST; i<=$FRAMELAST; i++ ))
+    do
+      frameNo=$(printf "%0*d" $nZeros $i) # leading zeros
+      BMPFILE=$BMPDIR/$MOLASSES/$WAITTIME/$FILESTEM$frameNo.bmp
+
+      # Sum brightness > threshold within ROI (Format: frame sum_brightness N_above_threshold)
+      if [ -e $file2 ]; then
+        echo -e "$i\t"`./sum_brightness $BMPFILE $MOTINFOFILE` >> $WAITFILE
+      fi
+    done
+ 
+    ###############      Data and cloud analysis      #########################################
+
+    # Check noise
+    NOISE=$(python noise.py $WAITFILE)
+    echo -e "Noise: "$NOISE
+    echo -e "$loop_molasses\t$loop_wait\t$NOISE" >> $NOISEREPORT
+
+    # Skip noise
+    if [ "$NOISE" -ne "1" ] ; then
+
+      # Zero frame (brightness drops when the laser is turned off)
+      ZEROFRAME=$(python analyse.py $WAITFILE 2)
+      echo -e "Zero frame no:\t$ZEROFRAME"
+
+      # Flash frame (molasses is illuminated after each wait time)
+      FRAME=$(python analyse.py $WAITFILE 2)
+      echo -e "Flash frame no:\t"$FRAME
+
+      # Write to molasses result file
+      echo -e "$loop_molasses\t$loop_wait\t"$ZEROFRAME"\t"$FRAME >> $MOLFILE
+
+      # Gaussian fit for cloud radius for zero and release frames (x and y axes)  
+      # Zero frame fit (x and y axes)
+      ZEROFRAME=$(printf "%0*d" $nZeros $ZEROFRAME) # leading zeros
+      ZEROFILE=$BMPDIR/$MOLASSES/$WAITTIME/$FILESTEM$ZEROFRAME.bmp
+      echo "Analysing "$ZEROFILE
+      if [ -e $ZEROFILE ]; then
+
+        ZEROFILEX=$DATADIR/$FILESTEM$ZEROFRAME-x.txt
+        ZEROFILEY=$DATADIR/$FILESTEM$ZEROFRAME-y.txt
+        ./project_to_axis $ZEROFILE x > $ZEROFILEX
+        ./project_to_axis $ZEROFILE y > $ZEROFILEY
+ 
+        # smooth y data, average every 2 pixels
+        ZEROFILEYSMOOTH=$ZEROFILEY"-smooth.txt"
+        python smooth.py $ZEROFILEY > $ZEROFILEYSMOOTH
+  
+        # Fit x-axis (I0,x0,sig,Ba,Bb)
+        echo "Fitting $ZEROFILEX using Gnuplot ($MOTGNUFILE)"
+        max=$(python max.py $ZEROFILEX) # ~ Gaussian peak amplitude
+        peak=$(python peak.py $ZEROFILEX) # ~ Gaussian peak position
+        sig=$(python sigma.py $ZEROFILEX) # ~ Gaussian peak position
+        gnuplot -e "datafile='$ZEROFILEX';psname='$PLOTDIR/$ZEROFRAME-x.ps';title='t_{mol} = $loop_molasses ms, t_{wait} = $loop_wait ms, frame $ZEROFRAME x-axis'; outfile='$PLOTDIR/$ZEROFRAME-x-sig.txt'; outfile2='$PLOTDIR/$ZEROFRAME-x-sig-err.txt';I0=$max;x0=$peak;sig=$sig;" $MOTGNUFILE
+        mv fit.log $LOGDIR/$ZEROFRAME-x.log
+        ZEROSIGX=$(more $PLOTDIR/$ZEROFRAME-x-sig.txt)
+        ZEROSIGXERR=$(more $PLOTDIR/$ZEROFRAME-x-sig-err.txt)
+
+        # y-axis
+        echo "Fitting $ZEROFILEYSMOOTH using Gnuplot ($MOTGNUFILE)"
+        max=$(python max.py $ZEROFILEYSMOOTH) # ~ Gaussian peak amplitude
+        peak=$(python peak.py $ZEROFILEYSMOOTH) # ~ Gaussian peak position
+        sig=$(python sigma.py $ZEROFILEYSMOOTH) # ~ Gaussian peak position
+        gnuplot -e "datafile='$ZEROFILEYSMOOTH';psname='$PLOTDIR/$ZEROFRAME-y.ps';title='t_{mol} = $loop_molasses ms, t_{wait} = $loop_wait ms, frame $ZEROFRAME y-axis'; outfile='$PLOTDIR/$ZEROFRAME-y-sig.txt'; outfile2='$PLOTDIR/$ZEROFRAME-y-sig-err.txt';I0=$max;x0=$peak;sig=$sig;" $MOTGNUFILE
+        mv fit.log $LOGDIR/$ZEROFRAME-y.log
+        ZEROSIGY=$(more $PLOTDIR/$ZEROFRAME-y-sig.txt)
+        ZEROSIGYERR=$(more $PLOTDIR/$ZEROFRAME-y-sig-err.txt)
+
+      fi # end zero fit
+    
+      # Flash frame
+      FRAME=$(printf "%0*d" $nZeros $FRAME) # leading zeros
+      FLASHFILE=$BMPDIR/$MOLASSES/$WAITTIME/$FILESTEM$FRAME.bmp
+      if [ -e $FLASHFILE ]; then
+
+        FLASHFILEX=$DATADIR/$FILESTEM$FRAME-x.txt
+        FLASHFILEY=$DATADIR/$FILESTEM$FRAME-y.txt  
+        ./project_to_axis $FLASHFILE x > $FLASHFILEX
+        ./project_to_axis $FLASHFILE y > $FLASHFILEY
+
+        # smooth y data, average every 2 pixels
+        FLASHFILEYSMOOTH=$FLASHFILEY"-smooth.txt"
+        python smooth.py $FLASHFILEY > $FLASHFILEYSMOOTH
+  
+        # Fit x-axis (I0,x0,sig,Ba,Bb)
+        echo "Fitting $FLASHFILEX using Gnuplot ($MOTGNUFILE)"
+        max=$(python max.py $FLASHFILEX) # ~ Gaussian peak amplitude
+        peak=$(python peak.py $FLASHFILEX) # ~ Gaussian peak position
+        sig=$(python sigma.py $FLASHFILEX) # ~ Gaussian peak position
+        gnuplot -e "datafile='$FLASHFILEX';psname='$PLOTDIR/$FRAME-x.ps';title='t_{mol} = $loop_molasses ms, t_{wait} = $loop_wait ms, frame $FRAME x-axis'; outfile='$PLOTDIR/$FRAME-x-sig.txt'; outfile2='$PLOTDIR/$FRAME-x-sig-err.txt';I0=$max;x0=$peak;sig=$sig;" $MOTGNUFILE
+        mv fit.log $LOGDIR/$FRAME-x.log
+        FLASHSIGX=$(more $PLOTDIR/$FRAME-x-sig.txt)
+        FLASHSIGXERR=$(more $PLOTDIR/$FRAME-x-sig-err.txt)
+
+        # y-axis
+        echo "Fitting $FLASHFILEYSMOOTH using Gnuplot ($MOTGNUFILE)"
+        max=$(python max.py $FLASHFILEYSMOOTH) # ~ Gaussian peak amplitude
+        peak=$(python peak.py $FLASHFILEYSMOOTH) # ~ Gaussian peak position
+        sig=$(python sigma.py $FLASHFILEYSMOOTH) # ~ Gaussian peak position
+        gnuplot -e "datafile='$FLASHFILEYSMOOTH';psname='$PLOTDIR/$FRAME-y.ps';title='t_{mol} = $loop_molasses ms, t_{wait} = $loop_wait ms, frame $FRAME y-axis'; outfile='$PLOTDIR/$FRAME-y-sig.txt'; outfile2='$PLOTDIR/$FRAME-y-sig-err.txt';I0=$max;x0=$peak;sig=$sig;" $MOTGNUFILE
+        mv fit.log $LOGDIR/$FRAME-y.log
+        FLASHSIGY=$(more $PLOTDIR/$FRAME-y-sig.txt)
+        FLASHSIGYERR=$(more $PLOTDIR/$FRAME-y-sig-err.txt)
+
+      fi # end flash fit
+
+      # Write fit result to file
+      echo -e "$loop_molasses\t$loop_wait\t$ZEROSIGX\t$ZEROSIGXERR\t$ZEROSIGY\t$ZEROSIGYERR\t$FLASHSIGX\t$FLASHSIGXERR\t$FLASHSIGY\t$FLASHSIGYERR" >> $RADIIDATA
+      echo "Zero frame: sigma_x = "$ZEROSIGX" +/- "$ZEROSIGXERR
+      echo "Zero frame: sigma_y = "$ZEROSIGY" +/- "$ZEROSIGYERR
+      echo "Flash frame sigma_x = "$FLASHSIGX" +/- "$FLASHSIGXERR
+      echo "Flash frame sigma_y = "$FLASHSIGY" +/- "$FLASHSIGYERR
+
+    fi # end noise check
+
+  # end wait time loop
+  done
+
+  ###################     Temperature analysis    ########################
+
+  if [ -e $RADIIDATA ]; then # if radii data was found successfully for zero and flash frames
+
+  echo "Temperature analysis using Gnuplot ($TEMPGNUFILE)"
+
+    # Mean zero-frame diameter (in pixels)
+    ZERORADX=$(awk '{ total += $3; count++ } END { print total/count }' $RADIIDATA)
+    ZERORADSIGX=$(awk '{ total += ($4)^2; count++ } END { print sqrt(total)/count }' $RADIIDATA)
+    ZERORADY=$(awk '{ total += $5; count++ } END { print total/count }' $RADIIDATA)
+    ZERORADSIGY=$(awk '{ total += ($6)^2; count++ } END { print sqrt(total)/count }' $RADIIDATA)
+
+    # Append zero frame to data file
+    echo -e "$loop_molasses\t0\t0\t0\t0\t0\t$ZERORADX\t$ZERORADSIGX\t$ZERORADY\t$ZERORADSIGY" >> $RADIIDATA
+  
+    # Fit to temperature formula (pass zero-frame radius into gnuplot)
+    gnuplot -e  "sx0=$ZERORADX;sy0=$ZERORADY;psname='$TEMPDIRBASE/$MOLASSES.ps';datafile='$RADIIDATA';tempOutput='$TEMPDIRBASE/$MOLASSES.txt';mol='$loop_molasses';" $TEMPGNUFILE
+    mv fit.log $TEMPDIRBASE/$MOLASSES.log
+  
+    # Collect results for all values of molasses time
+    more $TEMPDIRBASE/$MOLASSES.txt >> $FINALRESULT
+
+  fi # end temperature analysis
+
+# end molasses time loop
+done
+
+# Plot the temperature as a function of molasses duration
+gnuplot -e "data='$FINALRESULT';" $MOLGNUFILE
+mv fit.log $TEMPDIRBASE/temp-mol.log

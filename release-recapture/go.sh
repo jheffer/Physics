@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Loops through images in folder structure
+# ./Images/<molasses_duration>/<wait_time>/
+# wait_time = ballistic expansion time
+
+# Options
+nZeros=3 # leading zeros
+NSIG=2 # how big is the ROI, in number of sigmas
+BMPDIR=images
+FILESTEM=""
+
+# Data range
+FRAMEFIRST=0
+FRAMELAST=300
+
+# Make base directories
+DATADIR="data"
+LOGDIR="logs"
+PLOTDIR="plots"
+rm -r $DATADIR
+mkdir $DATADIR
+rm -r $LOGDIR
+mkdir $LOGDIR
+rm -r $PLOTDIR
+mkdir $PLOTDIR
+
+# Data files
+MOTINFOFILE=$DATADIR"/mot-info.txt"
+DATAFILE=$DATADIR"/brightness.txt"
+BRIGHTGNUFILE="brightness.gnu"
+
+#############     Analyse first frame     #######################
+
+# Find info/region of interest for first bitmap
+frameNo=$(printf "%0*d" $nZeros $FRAMEFIRST) # leading zeros
+FIRSTBMPFILE=$BMPDIR/$FILESTEM$frameNo.bmp
+
+# Project to axes
+if [ -e $FIRSTBMPFILE ]; then
+  ./project_to_axis $FIRSTBMPFILE # (appends "-x.txt" and "-y.txt")
+  FIRSTBMPDATAX=$DATADIR"/"$FILESTEM$frameNo".bmp-x.txt"
+  FIRSTBMPDATAY=$DATADIR"/"$FILESTEM$frameNo".bmp-y.txt"
+  mv $FIRSTBMPFILE"-x.txt" $FIRSTBMPDATAX
+  mv $FIRSTBMPFILE"-y.txt" $FIRSTBMPDATAY
+fi 
+
+# Find peak +/- sigma
+python size.py $FIRSTBMPDATAX > $MOTINFOFILE
+python size.py $FIRSTBMPDATAY >> $MOTINFOFILE
+python peak.py $FIRSTBMPDATAX >> $MOTINFOFILE
+python peak.py $FIRSTBMPDATAY >> $MOTINFOFILE
+python sigma.py $FIRSTBMPDATAX >> $MOTINFOFILE
+python sigma.py $FIRSTBMPDATAY >> $MOTINFOFILE
+
+# Find ROI
+python roi.py $MOTINFOFILE $NSIG >> $MOTINFOFILE
+
+##############    Exctract bitmap data   ########################
+
+# Sum brightness (above threshold and within ROI)
+for (( i=$FRAMEFIRST; i<=$FRAMELAST; i++ )); do
+  frameNo=$(printf "%0*d" $nZeros $i) # leading zeros
+  BMPFILE=$BMPDIR/$FILESTEM$frameNo.bmp
+  if [ -e $file2 ]; then
+    echo -e "$i\t"`./sum_brightness $BMPFILE $MOTINFOFILE` >> $DATAFILE
+  fi
+done
+
+# Plot the data
+gnuplot -e "datafile='$DATAFILE';psname='$PLOTDIR/brightness.ps';" $BRIGHTGNUFILE
+
+##############    Analyse data   ########################
+
+echo $(python analyse.py $DATAFILE 1)
+echo $(python analyse.py $DATAFILE 2)
+echo $(python analyse.py $DATAFILE 3)

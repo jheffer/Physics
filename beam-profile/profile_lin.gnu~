@@ -1,0 +1,46 @@
+# OPTIONS
+psname = "profile_lin.ps"
+datafile = "radii.txt"
+dz = 12.5 # mm, distance from c-mount to chip
+scale = 2 * 5.6 # 2*sigma * pixel size/um
+
+# DISPLAY OPTIONS
+set title "Beam profile"
+set xlabel "Position z/mm"
+set ylabel "1/e^2 intensity radius w(z)/{/Symbol m}m"
+set xrange [0:]
+#set yrange [-250:250]
+set fit errorvariables
+
+# FIT INITIAL PARAMETERS
+# y = mx + c
+mx = 1
+cx = 185.452*scale
+my = -1
+cy = -154.756*scale
+
+# FIT
+w_x(x) = mx * x + cx
+w_y(x) = my * x + cy
+fit w_x(x) datafile using ($1+dz):(abs($2)*scale):($3*scale) via mx,cx
+chi_x = FIT_WSSR; ndf_x = FIT_NDF
+fit w_y(x) datafile using ($1+dz):(-abs($4)*scale):($5*scale) via my,cy
+chi_y = FIT_WSSR; ndf_y = FIT_NDF
+
+# LABEL
+fit_info = sprintf("D(z = 0) = %.2f {/Symbol m}m\n\
+dw_x/dz = %.2f +/- %.2f mm/m\n\
+dw_y/dz = %.2f +/- %.2f mm/m",\
+w_x(0)-w_y(0),mx, mx_err,-my,my_err)
+set label fit_info at graph 0.1 ,graph 0.7
+
+# PLOT
+set output psname
+set size 1.0, 0.6
+set terminal postscript portrait enhanced mono solid lw 1 "CM Roman, Times New Roman, Serif" 16
+plot datafile using ($1+dz):($2*scale):(abs($3)*scale) with yerrorbars t "" pt 7 ps 0.2,\
+w_x(x) t 'w(z) = mx + c' lt rgb "#DD4411",\
+datafile using ($1+dz):(-abs($4)*scale):($5*scale) with yerrorbars t "" pt 7 ps 0.2,\
+w_y(x) t '' lt rgb "#44DD11"
+set terminal x11
+set size 1,1

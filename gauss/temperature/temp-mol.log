@@ -1,0 +1,11 @@
+
+
+*******************************************************************************
+Thu Oct  1 16:21:46 2015
+
+
+FIT:    data read from data using 1:($2*yscale):($3*yscale)
+	x range restricted to [0.00000 : *]
+	y range restricted to [0.00000 : *]
+BREAK:          No data to fit 
+

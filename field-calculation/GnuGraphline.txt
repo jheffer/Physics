@@ -1,0 +1,22 @@
+set xlabel "z axis"
+set ylabel "B field in x "
+set title "Magnetic field in X for three pairs of coils. \n Field strength in mG"
+set term postscript eps color blacktext "Helvetica" 24 size 5,5
+set output 'CancelXaxisalongZ.eps'
+plot "Cancel1D.txt" using 3:($4/1e-7)
+
+set xlabel "z axis"
+set ylabel "B field in y "
+set title "Magnetic field in Y for three pairs of square coils centred on 0,0,0 \n along the 0.5,y,0.5 . Field strength in mG"
+set term postscript eps color blacktext "Helvetica" 24 size 5,5
+set output 'CancelYaxisalongZ.eps'
+plot "Cancel1D.txt" using 3:($5/1e-7)
+
+
+set xlabel "z axis"
+set ylabel "B field in z "
+set title "Magnetic field in Z for three pairs of square coils centred on 0,0,0 \n along the 0.5,y,0.5 . Field strength in mG"
+set term postscript eps color blacktext "Helvetica" 24 size 5,5
+set output 'CancelZaxisalongZ.eps'
+plot "Cancel1D.txt" using 3:($6/1e-7)
+

@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+import sys
+
+# Find the region of interest around a peak
+
+N = 3 # how big is the ROI in number of sigma
+
+# Load data from text file
+filename = str(sys.argv[1]).strip()
+with open(filename) as f:
+  content = f.readlines()
+
+# Read text file to array of integers
+data = []
+for line in content:
+   data.append(int(line.strip()))
+
+sizeX = data[0]
+sizeY = data[1]
+peakX = data[2]
+peakY = data[3]
+sigX = data[4]
+sigY = data[5]
+
+# X roi
+roixmin = peakX - N*sigX
+if(roixmin < 0):
+  roixmin = 0
+roixmax = peakX + N*sigX
+if(roixmax >= sizeX):
+  roixmax = sizeX - 1
+
+# X roi
+roiymin = peakY - N*sigY
+if(roiymin < 0):
+  roiymin = 0
+roiymax = peakY + N*sigY
+if(roiymax >= sizeY):
+  roiymax = sizeY - 1
+
+# print results
+print str(roixmin) + "\n" + str(roixmax) + "\n" + str(roiymin) + "\n" + str(roiymax)
+

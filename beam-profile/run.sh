@@ -1,0 +1,50 @@
+#!/bin/bash
+# ------------------------------------------------------------------
+# [Joe Heffer] Beam profiling 2.0
+#          Analyse BMP files into a beam profile
+# ------------------------------------------------------------------
+
+# Options
+FILES=*.bmp # list of bitmaps to analyse
+PLOTDIR=plots
+DATADIR=data
+
+# Clear old data
+rm radii.txt
+echo -e "# file\tsig_x\tsig_x_err\tsig_y\tsig_y_err" > radii.txt
+rm -r data
+rm -r $PLOTDIR
+mkdir data
+mkdir $PLOTDIR
+
+for file in $FILES # loop through bitmaps
+do
+  echo "Analysing $file"
+  ./bmptotxt $file # BMP -> TXT
+  mv $file.txt $DATADIR/$file.txt
+  python rowcol.py $DATADIR/$file.txt
+  # Naive fit properties
+  MAXINTX="$(python max.py $DATADIR/$file-x.txt)"
+  MAXINTY="$(python max.py $DATADIR/$file-y.txt)"
+  PEAKPOSX="$(python peakpos.py $DATADIR/$file-x.txt)"
+  PEAKPOSY="$(python peakpos.py $DATADIR/$file-y.txt)"
+  SIGMAX="$(python sigma.py $DATADIR/$file-x.txt)"
+  SIGMAY="$(python sigma.py $DATADIR/$file-y.txt)"        
+  gnuplot -e "filename='$file';psname='$PLOTDIR/$file-x.ps';title='$file x-axis';datafile='$DATADIR/$file-x.txt';maxint=$MAXINTX;peakpos=$PEAKPOSX;sigma=$SIGMAX;" plot.gnu
+  mv fit.log $PLOTDIR/$file-x.log
+  gnuplot -e "filename='$file';psname='$PLOTDIR/$file-y.ps';title='$file y-axis';datafile='$DATADIR/$file-y.txt';maxint=$MAXINTY;peakpos=$PEAKPOSY;sigma=$SIGMAY;" plot.gnu
+  mv fit.log $PLOTDIR/$file-y.log
+#  echo -e "$file\t"$(grep "+/-" $PLOTDIR/$file-x.log | grep "sigma")"\t"$(grep "+/-" $PLOTDIR/$file-y.log | grep "sigma") >> radii.txt
+  resultx=$(grep "+/-" $PLOTDIR/$file-x.log | grep "sigma")
+  stringarrayx=($resultx)
+  sig_x=${stringarrayx[2]}
+  sig_x_err=${stringarrayx[4]}
+  resulty=$(grep "+/-" $PLOTDIR/$file-y.log | grep "sigma")
+  stringarrayy=($resulty)
+  sig_y=${stringarrayy[2]}
+  sig_y_err=${stringarrayy[4]}
+  echo -e "$file\t$sig_x\t$sig_x_err\t$sig_y\t$sig_y_err" >> radii.txt
+done
+
+gnuplot profile.gnu
+gnuplot profile_lin.gnu

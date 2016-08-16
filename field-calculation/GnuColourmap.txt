@@ -1,0 +1,28 @@
+set view map
+#set size square
+set palette rgbformulae 22,13,10
+set xlabel "y axis"
+set ylabel "z axis"
+set title "Magnetic field in three pairs of coils. \n Field strength in mG"
+set term postscript eps color blacktext "Helvetica" 24 size 5,5
+set output '9mmCube100Mag.eps'
+#set xrange [0.1:.65]
+#set yrange [0.1:1.4]
+
+set nokey
+
+set title "Magnetic field magnitude for three pairs of coils. \n Field strength in mG"
+#splot "DataForGraph.txt" using 1:2:($4/1e-7) with pm3d
+splot "Cancel2D.txt" using 2:3:(sqrt($4*$4+$5*$5+$6*$6)/1e-7) with pm3d notitle
+
+set output 'CancelCube100X.eps'
+set title "Magnetic field in X for three pairs of coils. \n Field strength in mG"
+splot "Cancel2D.txt" using 2:3:($4/1e-7) with pm3d notitle
+
+set output 'CancelCube100Y.eps'
+set title "Magnetic field in Y for three pairs of coils. \n Field strength in mG"
+splot "Cancel2D.txt" using 2:3:($5/1e-7) with pm3d notitle
+
+set output 'CancelCube100Z.eps'
+set title "Magnetic field in Z for three pairs of coils. \n Field strength in mG"
+splot "Cancel2D.txt" using 2:3:($6/1e-7) with pm3d notitle

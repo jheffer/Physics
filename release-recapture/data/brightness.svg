@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"  standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800" height="700" viewBox="0 0 800 700"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<desc>Produced by GNUPLOT 4.2 patchlevel 6  </desc>
+
+<defs>
+
+	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
+	<path id='gpPt0' stroke-width='0.089' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' stroke-width='0.089' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' stroke-width='0.089' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' stroke-width='0.089' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<rect id='gpPt4' stroke-width='0.089' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<circle id='gpPt5' stroke-width='0.089' stroke='currentColor' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
+	<path id='gpPt7' stroke-width='0.089' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
+</defs>
+<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<path  d='M265.5,556.0 L288.0,556.0 M747.5,556.0 L725.0,556.0 '></path>
+	<g transform="translate(244.5,567.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 0</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,509.2 L288.0,509.2 M747.5,509.2 L725.0,509.2 '></path>
+	<g transform="translate(244.5,520.4)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 5000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,462.4 L288.0,462.4 M747.5,462.4 L725.0,462.4 '></path>
+	<g transform="translate(244.5,473.6)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 10000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,415.7 L288.0,415.7 M747.5,415.7 L725.0,415.7 '></path>
+	<g transform="translate(244.5,426.9)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 15000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,368.9 L288.0,368.9 M747.5,368.9 L725.0,368.9 '></path>
+	<g transform="translate(244.5,380.1)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 20000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,322.1 L288.0,322.1 M747.5,322.1 L725.0,322.1 '></path>
+	<g transform="translate(244.5,333.3)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 25000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,275.3 L288.0,275.3 M747.5,275.3 L725.0,275.3 '></path>
+	<g transform="translate(244.5,286.5)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 30000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,228.6 L288.0,228.6 M747.5,228.6 L725.0,228.6 '></path>
+	<g transform="translate(244.5,239.8)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 35000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,181.8 L288.0,181.8 M747.5,181.8 L725.0,181.8 '></path>
+	<g transform="translate(244.5,193.0)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 40000</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,135.0 L288.0,135.0 M747.5,135.0 L725.0,135.0 '></path>
+	<g transform="translate(244.5,146.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:end">
+		<text><tspan> 45000</tspan>
+		</text>
+	</g>
+	<path  d='M289.6,556.0 L289.6,533.5 M289.6,135.0 L289.6,157.5 '></path>
+	<g transform="translate(289.6,612.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan> 0.475</tspan>
+		</text>
+	</g>
+	<path  d='M410.1,556.0 L410.1,533.5 M410.1,135.0 L410.1,157.5 '></path>
+	<g transform="translate(410.1,612.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan> 0.5</tspan>
+		</text>
+	</g>
+	<path  d='M530.6,556.0 L530.6,533.5 M530.6,135.0 L530.6,157.5 '></path>
+	<g transform="translate(530.6,612.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan> 0.525</tspan>
+		</text>
+	</g>
+	<path  d='M651.1,556.0 L651.1,533.5 M651.1,135.0 L651.1,157.5 '></path>
+	<g transform="translate(651.1,612.2)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan> 0.55</tspan>
+		</text>
+	</g>
+	<path  d='M265.5,135.0 L265.5,556.0 L747.5,556.0 L747.5,135.0 L265.5,135.0 Z '></path>
+	<g transform="translate(86.2,345.5) rotate(-90)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan>Integrated brightness/a.u.</tspan>
+		</text>
+	</g>
+	<g transform="translate(506.5,679.7)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan>Time/ms</tspan>
+		</text>
+	</g>
+	<g transform="translate(506.5,78.7)" style="stroke:none; fill:black; font-family:Times New Roman; font-size:30.00pt; text-anchor:middle">
+		<text><tspan>Molasses release-recapture</tspan>
+		</text>
+	</g>
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<path stroke='rgb(165,  42,  42)'  d='M265.5,185.7 L277.6,182.0 L289.6,188.2 L301.7,189.0 L313.7,197.3 L325.8,191.5 L337.8,191.2 L349.9,186.8 
+		L361.9,184.4 L374.0,184.1 L386.0,179.4 L398.1,183.8 L410.1,178.7 L422.2,181.5 L434.2,182.3 L446.3,187.8 
+		L458.3,196.0 L470.4,195.8 L482.4,225.8 L494.5,498.8 L506.5,501.1 L518.6,427.2 L530.6,493.4 L542.7,501.6 
+		L554.7,501.0 L566.8,501.3 L578.8,502.3 L590.9,501.7 L602.9,501.8 L615.0,501.6 L627.0,501.4 L639.1,501.9 
+		L651.1,502.0 L663.2,502.6 L675.2,501.9 L687.3,501.4 L699.3,501.7 L711.4,501.9 L723.4,500.8 L735.5,503.1 
+		L747.5,502.7 '></path>
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
+	<path  d='M265.5,135.0 L265.5,556.0 L747.5,556.0 L747.5,135.0 L265.5,135.0 Z '></path>
+</g>
+</svg>
+

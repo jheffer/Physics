@@ -1,0 +1,17 @@
+# DISPLAY OPTIONS
+set title "Molasses release-recapture"
+set xlabel "Time/ms"
+set xrange [0.47:0.57]
+set xtics 0.025
+dt=0.0025 # 1/(400 fps)
+set ylabel "Integrated brightness/a.u."
+set yrange [0:]
+
+# SVG output
+set output "brightness.svg"
+set size 1,1
+set terminal svg enhanced size 800,700 fname "Times New Roman" fsize 30
+plot "brightness.txt" using ($1*dt):2 t "" pt 7 ps 0.3 lt rgb "brown" w l
+set output "brightness-norm.svg"
+max_y = GPVAL_DATA_Y_MAX
+plot "brightness.txt" using ($1*dt):($2/max_y) t "" pt 7 ps 0.3 lt rgb "brown" w l

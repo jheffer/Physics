@@ -1,0 +1,24 @@
+# Options
+set title title
+set xlabel 'Position/pixel'
+set ylabel 'Optical intensity'
+set yrange [0:]
+
+# fit
+f(x) = I0 * exp(-((x-x0)**2)/(2*sigma**2)) + Ibg * x + const
+I0 = maxint
+x0 = peakpos
+Ibg = 100/maxint
+const = 1000/maxint
+fit f(x) datafile using 1:($2/maxint) via I0,x0,sigma,Ibg,const
+
+# labels
+label = sprintf('1-sigma radius = %.2f pixels',sigma)
+set label label at graph 0.02,graph 0.05
+
+# plot
+set output psname
+set size 1.0, 0.6
+set terminal postscript portrait enhanced mono solid lw 1 "CM Roman, Times New Roman, Serif" 16
+plot datafile using 1:($2/maxint) t "" with lines,\
+f(x) t "Gauss(x) + const." lt rgb "#DD4411"

@@ -1,0 +1,66 @@
+show variables
+
+# DISPLAY OPTIONS
+set title sprintf("Cloud expansion, %s ms molasses duration", mol)
+set xlabel "Time-of-flight/ms"
+set ylabel "Cloud one-sigma radius/mm"
+set xrange [0:]
+set yrange [0:]
+set key left
+tScale = 1 # time scale
+pxScale = 34E-6 * 1E3 # mm/px camera scale
+
+# Quadratic fit -- Gaussian cloud expansion [Brzozowski, 2001]
+set fit errorvariables
+sx(x) = (sx0**2 + (kB/m)*Tx*x**2)**0.5
+sy(x) = (sy0**2 + (kB/m)*Ty*x**2)**0.5
+sx0 = sx0*pxScale
+sy0 = sy0*pxScale
+kB = 1.3806E-23 # Boltzmann constant
+m = 84.911789738 * 1.66053904E-27 # Rb atomic mass (Rb-85 = 84.911789738(12))
+Tx = 100E-6 # Temperature/K
+Ty = 100E-6
+show variables
+fit sx(x) datafile using ($2*tScale):(abs($7)*pxScale):(abs($8)*pxScale) via Tx, sx0
+fit sy(x) datafile using ($2*tScale):(abs($9)*pxScale):(abs($10)*pxScale) via Ty, sy0
+
+# Linear fit (t >> 0) (ignoring zero frame)
+fx(x) = sqrt(kB * Tx2 / m) * x + constx
+fy(x) = sqrt(kB * Ty2 / m) * x + consty
+constx = 3E-4
+consty = 3E-4
+Tx2 = 50E-6
+Ty2 = 50E-6
+fit [1:] fx(x) datafile using ($2*tScale):(abs($7)*pxScale):(abs($8)*pxScale) via Tx2, constx
+fit [1:] fy(x) datafile using ($2*tScale):(abs($9)*pxScale):(abs($10)*pxScale) via Ty2, consty
+
+# Maxwell vel dist http://hyperphysics.phy-astr.gsu.edu/hbase/kinetic/kintem.html
+v1p = 100*sqrt(2)*sqrt(kB*(Tx+Ty)*0.5/m)
+v1rms = v1p*sqrt(1.5)
+v2p = 100*sqrt(2)*sqrt(kB*(Tx2+Ty2)*0.5/m)
+v2rms = v2p*sqrt(1.5)
+
+# Example temperatures
+f(x,T) = ((0.5*(sx0+sy0))**2 + (kB/m)*T*x**2)**0.5
+
+# DISPLAY
+temp = sprintf("Quadratic fit\nT_x = %.2f +/- %.2f {/Symbol m}K\nT_y = %.2f +/- %.2f {/Symbol m}K\nv_{p} = %.1f cm/s\nv_{RMS} = %.1f cm/s", Tx*1E6, Tx_err*1E6, Ty*1E6, Ty_err*1E6, v1p, v1rms)
+set label temp at graph 0.05,graph 0.70
+
+temp2 = sprintf("Linear fit (exc. t = 0)\nT_x = %.2f +/- %.2f {/Symbol m}K\nT_y = %.2f +/- %.2f {/Symbol m}K\nv_{p} = %.1f cm/s\nv_{RMS} = %.1f cm/s", Tx2*1E6, Tx2_err*1E6, Ty2*1E6, Ty2_err*1E6, v2p, v2rms)
+set label temp2 at graph 0.05,graph 0.50
+
+# PLOT
+set output psname
+set size 1.0, 0.6
+set terminal postscript portrait enhanced mono solid lw 1 "CM Roman, Times New Roman, Serif" 12
+plot datafile u ($2*tScale):(abs($7)*pxScale):(abs($8)*pxScale) pt 0 lt rgb "#cc4444" t "x-axis" w yerrorbars,\
+datafile u ($2*tScale):(abs($9)*pxScale):(abs($10)*pxScale) pt 0 lt rgb "#4444cc" t "y-axis" w yerrorbars,\
+sx(x) t "{/Symbol s}_x(t) = {/Symbol @\326\140}{({{/Symbol s}_0}^2 + (k_BT/m)t^2)}" lt rgb "#aa2222",\
+sy(x) t "{/Symbol s}_y(t)" lt rgb "#2222aa",\
+f(x,20E-6) t "T = 20 {/Symbol m}K" lt rgb "#cccccc",\
+f(x,145.7E-6) t "T_{Dopp} = 145.7 {/Symbol m}K" lt rgb "#cccccc"
+
+# Output temperature in Kelvin
+set print tempOutput
+print sprintf("%s\t%E\t%E\t%E\t%E", mol, Tx, Tx_err, Ty, Ty_err)
