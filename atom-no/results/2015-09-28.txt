@@ -1,0 +1,10 @@
+Input power	50 mW
+Detuning freq.	5 MHz
+Beam diameter	10 mm
+Laser intensity	63.7 mW/cm^2
+Scattering rate	4.75 MHz
+I/I_sat		38.1
+Signal flux	496 nW
+Fractional area	0.25%
+4pi flux	0.000198 W
+N		164 million

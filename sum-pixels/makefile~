@@ -1,0 +1,2 @@
+all:
+	g++ -o sum main.cpp -lX11 -lpthread
