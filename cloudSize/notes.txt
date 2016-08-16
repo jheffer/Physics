@@ -1,0 +1,19 @@
+Gnuplot fit for y data:
+
+	f(x) = a * exp(-(x-x0)**2/(2*sig**2)) + const
+	a = 1830.6653143929
+	x0 = 14.4695213918679
+	sig = 2.50904228890883
+	const = 206.841256553197
+
+fit f(x) "data.txt" via a,x0,const,sig
+
+
+for x:
+
+a2              = 1849.29          +/- 36.03        (1.949%)
+x02             = 10.9514          +/- 0.05368      (0.4902%)
+const2          = 200.997          +/- 20.27        (10.08%)
+sig2            = 2.60046          +/- 0.06713      (2.581%)
+
+successfully made the numbers match by background subtraction.
