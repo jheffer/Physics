@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cmath>
+#include "Particle.h"
+
+using namespace std;
+
+// Constructors and destructors
+
+Particle::Particle(double px, double py, double pz) {
+  m_px = px;
+  m_py = py;
+  m_pz = pz;
+}
+
+Particle::~Particle() {
+  //cout << "(Particle destroyed.)" << endl;
+}
+
+// Setters
+
+void Particle::setPx(double px) {
+  m_px = px;
+}
+
+void Particle::setPy(double py) {
+  m_py = py;
+}
+
+void Particle::setPz(double pz) {
+  m_pz = pz;
+}
+
+// Getters
+
+// Momentum in the x,y and z directions
+double Particle::getPx()     const {
+  return m_px;
+}
+
+double Particle::getPy()     const {
+  return m_py;
+}
+
+double Particle::getPz()     const {
+  return m_pz;
+}
+ 
+// Angle to the z axis in degrees (0 to 180)
+double Particle::getTheta()  const {
+  double r = sqrt(pow(m_px,2) + pow(m_py,2)); // p as seen from above
+  return atan2(r,m_pz);
+}
+
+// Angle to the x axis in degrees (-180 to 180)
+double Particle::getPhi()    const {
+  return atan2(m_py,m_px);
+}
+
+double Particle::getEnergy() const {
+  double c = 299792458.0;	// Speed of light [m/s]
+  double p = sqrt( pow(m_px,2) + pow(m_py,2) + pow(m_pz,2) ); // magnitude of p
+  return sqrt( pow( m_mass*pow(c,2) ,2) + pow( p*c ,2) ); // E [J]
+}
+
+double Particle::getMass()   const {
+  return m_mass;
+}
+
+int Particle::getCharge() const {
+  return m_charge;
+}
+
+int    Particle::getId()     const {
+  return m_id;
+}

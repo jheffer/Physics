@@ -1,0 +1,264 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include "sample.h"
+
+using namespace std;
+
+// constructor to read sample from keyboard
+Sample::Sample() {
+  the_size = setSize();
+  the_sample = setSample(this->the_size);
+}
+
+// constructor to read sample from file
+Sample::Sample(char* filename) {
+
+  // read file containing sample
+  ifstream sampleFile(filename);
+
+  // set nominally large array to hold sample
+  the_sample = new double[1000];
+
+  // read sample values
+  the_size = 0;
+  while( (!sampleFile.eof()) && (the_size < 1000) ) {
+    sampleFile >> *(the_sample + the_size++);
+  } 
+  the_size--;
+
+  // close file
+  sampleFile.close();
+
+  if(getSize()){
+    cout << "Successfully loaded "<<filename<<" with " << getSize() << " entries.\n";
+  }
+}
+
+// constructor with direct sample input
+Sample::Sample(double* sampleArray, int size) {
+
+  // assign size of array
+  the_size = size;
+  
+  // copy array contents
+  the_sample = new double[size];
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) {
+    *(the_sample + (sampleCount-1)) = *(sampleArray + (sampleCount-1));
+  }
+}
+
+// copy constructor
+Sample::Sample(const Sample& rhs) {
+
+  // assign size of array
+  the_size = rhs.the_size;
+
+  // copy array contents
+  the_sample = new double[the_size];
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) {
+    *(the_sample + (sampleCount-1)) = *(rhs.the_sample + (sampleCount-1));
+  }
+}
+
+// destructor
+Sample::~Sample() {
+  delete the_sample;
+}
+
+// overloaded addition operator
+Sample Sample::operator+ (const Sample& rhs) {
+ 
+  // get size
+  int newsize = this->the_size + rhs.the_size;
+
+  // declare new array
+  double newSampleArray[newsize];
+
+  // copy array from lhs of + 
+  int i = 0;
+  while (i < the_size) {
+    *(newSampleArray + i) = *(the_sample + i);
+    i++;
+  }
+
+  // copy array from rhs of +
+  i = the_size;
+  int j = 0;
+  while (i < (the_size + rhs.the_size)) {
+    *(newSampleArray + i) = *(rhs.the_sample + j);
+    i++; j++;
+  }
+
+  // return sample via constrcutor method
+  return Sample(newSampleArray,newsize);
+}
+
+// overload assignment operator
+Sample& Sample::operator= (const Sample& rhs) {
+
+  // if lhs and rhs are equal
+  if (this == &rhs) return *this;
+  
+  // get size
+  the_size = rhs.the_size;
+
+  // get sample
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) {
+    *(the_sample + (sampleCount-1)) = *(rhs.the_sample + (sampleCount-1));
+  }
+
+  return *this;
+}
+
+
+// display the sample 
+void Sample::showSample() const {
+
+  cout << "Sample contents:\n";
+
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) {
+    cout << "value " << sampleCount << ":\t" 
+         << the_sample[sampleCount-1] << endl;
+  }
+
+  return;
+}
+
+// calculate the mean
+double Sample::mean() const {
+
+  // calculate sum of sample
+  int sampleCount = 0;
+  double sum = 0;
+  while (++sampleCount <= the_size) sum += the_sample[sampleCount-1];
+    
+  // calculate and return mean
+  return (sum / the_size);
+}
+
+// calculate the standard deviation
+double Sample::stdev() const {
+
+  // get mean of sample
+  double mean = this->mean();
+
+  // calculate x_i - mean
+  double meanDev = 0; 
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) 
+    meanDev += pow((the_sample[sampleCount-1] - mean),2);
+  
+  // calculate standard deviation
+  double stdev = sqrt( meanDev / the_size); 
+      
+  return stdev;
+}
+
+// return a copy of the ordered sample
+double* Sample::order(int rank) const {
+
+  // create new sample array on the heap
+  double* newSampleArray = new double[the_size];
+  
+  // copy conents of sample array into copy
+  int sampleCount = 0;
+  while (++sampleCount <= the_size) {
+    *(newSampleArray + (sampleCount-1)) = *(the_sample + (sampleCount-1));
+  }
+
+  // bubble sort algorithm 
+  for (int i = 0; i < (the_size - 1); i++) {
+    for (int j = 0; j < (the_size - 1); j++) {
+  
+      // probably not the best way to do this!
+      if (
+          ( (rank == 1) && 
+            (*(newSampleArray + j) > *(newSampleArray + j+1)) )
+          || ( (rank == 2) && 
+               (*(newSampleArray + j) < *(newSampleArray + j+1)) )
+          ) {
+        float swap =  *(newSampleArray + j);
+        *(newSampleArray + j) = *(newSampleArray + j+1);
+        *(newSampleArray + j+1) = swap;
+      }
+
+    }
+  }
+  
+  return newSampleArray;
+}
+
+// order the sample
+void Sample::selfOrder(int rank) {
+
+  // bubble sort algorithm 
+  for (int i = 0; i < (the_size - 1); i++) {
+    for (int j = 0; j < (the_size - 1); j++) {
+  
+      // probably not the best way to do this!
+      if (
+          ( (rank == 1) && 
+            (*(the_sample + j) > *(the_sample + j+1)) )
+          || ( (rank == 2) && 
+               (*(the_sample + j) < *(the_sample + j+1)) )
+          ) {
+        float swap =  *(the_sample + j);
+        *(the_sample + j) = *(the_sample + j+1);
+        *(the_sample + j+1) = swap;
+      }
+
+    }
+  }
+
+  return;
+}
+
+// find correlation between two data samples
+double Sample::correlation(const Sample& b) const {
+
+  if(the_size != b.getSize()){return 0;} // size mismatch check
+
+  return covar(b)/(stdev()*b.stdev());
+}
+
+// covariance
+double Sample::covar(const Sample& b) const {
+  double x(0);
+  double meanx = mean();
+  double meany = b.mean();
+  for(int i = 0; i < the_size; i++){
+	x = x + (the_sample[i] - meanx)*(b.getSample()[i] - meany);
+  }
+  x = x / the_size;
+  return x;
+}
+
+// set the size of the sample
+int Sample::setSize() {
+  cout << "How big is the sample?" << endl;
+  int size;
+  cin >> size;
+  return size;
+}
+
+// read the sample from the keyboard
+double* Sample::setSample(int size) {
+  
+  // create new array on the free store
+  double* sample = new double[size];
+  
+  // read sample from cin
+  int sampleCount = 0;
+  while (++sampleCount <= size) {
+    cout << "Sample " << sampleCount << ":" << endl;
+    cin >> *(sample + sampleCount-1);
+  }
+
+  return sample;
+
+}

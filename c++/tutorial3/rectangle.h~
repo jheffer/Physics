@@ -1,0 +1,28 @@
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
+
+#include "point.h"
+
+class rectangle {
+ public:
+  rectangle();
+  rectangle(point lowerLeft, point upperRight); 
+  rectangle(float base, float height);
+  rectangle(float base, float height, point offset);
+  ~rectangle();
+  point getLL() const;
+  point getUR() const;
+  point getLR() const;
+  point getU:() const;
+  float getWidth();
+  float getHeight();
+  float getArea();
+  bool isWithin(point p);
+  bool isOverlap(rectangle r);
+ private:
+  point itsLowerLeft;
+  point itsLowerRight;
+  point itsUpperLeft;
+  point itsUpperRight;
+};
+#endif

@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+// Introduction to Programming using C++
+// Tutorial 1 Question 1
+// Note! This code will not compile
+// Author: Carl Gwilliam <gwilliam@hep.ph.liv.ac.uk>
+
+main() {
+
+  // get numbers
+  float a, b;
+  cout << "Give me two numbers:\n";
+  cin << a; cin << b
+
+  / get operation
+  int choice;
+  cout << "What operation would like to do?\n";
+  cout << "1 - add\n2 - subtract\n3 - multiply\n4 - divide\n";
+  cin >> choice;
+
+  int result;
+  if (choice = 1) {
+    result = a / b;
+  }
+  if (choice = 2) {
+    result = a - b;
+  }
+  if (choice = 3) {
+    result = a * b;
+  }
+  if (choice = 4) {
+    result = a + b;
+  } else {
+    cout >> "Option does not exist\n";
+  }
+  cout << "result = " << endl;
+
+  return 0;
+}

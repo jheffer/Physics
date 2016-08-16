@@ -1,0 +1,89 @@
+#include <iostream>
+#include <cmath>
+#include "point.h"
+#include "vect.h"
+
+using namespace std;
+
+// empty constructor
+vect::vect() {
+  itsX = 0;
+  itsY = 0;
+  itsZ = 0;
+}
+
+// constructor with explicit x,y and z
+vect::vect(double x, double y, double z) {
+  itsX = x;
+  itsY = y;
+  itsZ = z;
+  cout << "Created vector ["<<itsX<<","<<itsY<<","<<itsZ<<"]"<< endl;
+} 
+
+// constructor for vector between two points
+vect::vect(point a, point b) {
+  itsX = b.getX() - a.getX();
+  itsY = b.getY() - a.getY();
+  itsZ = b.getZ() - a.getZ();
+  cout << "Created vector ["<<itsX<<","<<itsY<<","<<itsZ<<"]"<< endl;
+}
+
+// copy constructor
+vect::vect(const vect& rhs) {
+  itsX = rhs.getX();
+  itsY = rhs.getY();
+  itsZ = rhs.getZ();
+  cout << "Created vector ["<<itsX<<","<<itsY<<","<<itsZ<<"]"<< endl;
+}
+
+// empty destructor
+vect::~vect() {
+  cout << "Destroyed vector ["<<itsX<<","<<itsY<<","<<itsZ<<"]"<< endl;
+} 
+
+void vect::show() const {
+  cout << "["<<itsX<<","<<itsY<<","<<itsZ<<"]"<< endl;
+}
+
+// dot product
+double vect::dotProduct(const vect& rhs) const {
+  return itsX * rhs.getX() + itsY * rhs.getY() + itsZ * rhs.getZ();
+}
+
+// vector product
+vect vect::crossProduct(const vect& rhs) const {
+  float i = (itsY*rhs.getZ() - itsZ*rhs.getY());
+  float j = (itsZ*rhs.getX() - itsX*rhs.getZ());
+  float k = (itsX*rhs.getY() - itsY*rhs.getX());
+  return vect(i,j,k);
+}
+
+// get angle between two vectors
+double vect::getAngle(const vect& rhs) const {
+  return acos(dotProduct(rhs)/(getMagnitude()*rhs.getMagnitude()));
+}
+
+// magnitude of vector
+double vect::getMagnitude() const {
+  return sqrt(pow(itsX,2)+pow(itsY,2)+pow(itsZ,2));
+}
+
+// overload addition operator
+vect vect::operator+ (const vect& rhs) {
+  return vect(itsX+rhs.getX(), itsY+rhs.getY(), itsZ+rhs.getZ());
+}
+
+// overload subtraction operator
+vect vect::operator- (const vect& rhs) {
+  return vect(rhs.getX()-itsX, rhs.getY()-itsY, rhs.getZ()-itsZ);
+}
+
+// overload cross product operator
+vect vect::operator* (const vect& rhs) {
+  return crossProduct(rhs);
+}
+
+// overload assignment operator
+vect& vect::operator= (const vect& rhs) {
+  return rhs&;
+}

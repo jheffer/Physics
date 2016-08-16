@@ -1,0 +1,94 @@
+#include <iostream>
+#include "rectangle.h"
+#include "point.h"
+
+// default constructor (unit rectangle)
+rectangle::rectangle() {
+  itsLowerLeft = point(); // origin
+  itsLowerRight = point(1,0,0);
+  itsUpperLeft = point(0,1,0);
+  itsUpperRight = point(1,1,0);
+}
+
+// constructor for given points
+rectangle::rectangle(point lowerLeft, point upperRight) {
+  itsLowerLeft = lowerLeft;
+  itsLowerRight = point(upperRight.getX(),lowerLeft.getY(),0);
+  itsUpperLeft = point(lowerLeft.getX(),upperRight.getY(),0);
+  itsUpperRight = upperRight;
+}
+
+// constructor for width and length 
+rectangle::rectangle(float base, float height) {
+  itsLowerLeft = point(); // origin
+  itsLowerRight = point(base,0,0);
+  itsUpperLeft = point(0,height,0);
+  itsUpperRight = point(base,height,0);
+}
+
+// constructor for width and length and origin offset
+rectangle::rectangle(float base, float height, point offset) {
+  itsLowerLeft = offset;
+  itsLowerRight = point(offset.getX()+base,offset.getY(),0);
+  itsUpperLeft = point(offset.getX(),offset.getY()+height,0);
+  itsUpperRight = point(offset.getX()+base,offset.getY()+height,0);
+}
+
+// destructor
+rectangle::~rectangle() {
+}
+
+// return corners
+point rectangle::getLL() const {
+  return itsLowerLeft;
+}
+
+point rectangle::getLR() const {
+  return itsLowerRight;
+}
+
+point rectangle::getUL() const {
+  return itsUpperLeft;
+}
+
+point rectangle::getUR() const {
+  return itsUpperRight;
+}
+
+// get width of rectangle
+float rectangle::getWidth() {
+  return  itsLowerRight.getX() - itsLowerLeft.getX();
+}
+
+// get height of rectangle 
+float rectangle::getHeight() {
+   return  itsUpperLeft.getY() - itsLowerLeft.getY(); 
+}
+
+// get area of rectangle
+float rectangle::getArea() {
+   return  getHeight()*getWidth();
+}
+
+// look for overlap between two rectangles
+bool rectangle::isWithin(point p) {
+  if(p.getX() <= itsLowerRight.getX() && p.getX() >= itsLowerLeft.getX() && p.getY() >= itsLowerLeft.getY() && p.getY() <= itsUpperLeft.getY()) return 1;
+  return 0; 
+}
+
+// look for overlap between two rectangles
+bool rectangle::isOverlap(rectangle r) {
+  // check whether lower-left/upper-right is within the rectangle
+  if(r.isWithin(itsLowerLeft)) return 1;
+  if(r.isWithin(itsUpperRight)) return 1;
+  if(r.isWithin(itsUpperLeft)) return 1;
+  if(r.isWithin(itsLowerRight)) return 1;
+  // and vice-versa (to catch squares entirely inside)
+  if(isWithin(r.getLL())) return 1;
+  if(isWithin(r.getLR())) return 1;
+  if(isWithin(r.getUL())) return 1;
+  if(isWithin(r.getUR())) return 1;
+  // catch sneaky squares (an edge (but not corners) overlaps)
+ 	 // not implemented
+  return 0; 
+}
